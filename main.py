@@ -1,16 +1,19 @@
-import matplotlib.pyplot as plt
-import numpy as np
+print("Hello! Welcome to the password strength test!")
 
-# Data for plotting
-t = np.arange(0.0, 2.0, 0.01)
-s = 1 + np.sin(2 * np.pi * t)
+user_password = input("Please Enter Your Password!")
 
-fig, ax = plt.subplots()
-ax.plot(t, s)
+score = 0
+digits = any(char.isdigit) for char in user_password # any() If at least one character is a digit, returns True
+special = any(char in string.punctuation for char in user_password) # Checks for special characters. Any() is checking against string.punctuation
 
-ax.set(xlabel='time (s)', ylabel='voltage (mV)',
-       title='About as simple as it gets, folks')
-ax.grid()
+if user_password != user_password.upper() #!= means "not equal to"
+       score = score + 10
 
-fig.savefig("test.png")
-plt.show()
+if user_password != user_password.lower()
+       score = score + 10
+
+if digits:
+       score = score + 10
+
+if special:
+       score = score + 10
